@@ -1,113 +1,118 @@
 import Image from 'next/image'
+import HeroHome from "@/components/Hero/HeroHome";
+import BlockGuide from "@/components/BlockGuide/BlockGuide";
+import HotelFilters from "@/components/HotelsFilter/HotelFilters";
+import Testimonial from "@/components/Testimonial/Testimonial";
+import CallToActionsHome from "@/components/CallToActions/Home";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <HeroHome />
+
+      <section className="layout-pt-lg layout-pb-md">
+        <div className="container">
+          <div className="row y-gap-40 sm:y-gap-10 justify-between">
+            <BlockGuide />
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section className="layout-pt-md layout-pb-lg">
+        <div className="container">
+          <div className="row y-gap-10 justify-between items-end">
+            <div className="col-auto">
+              <div className="sectionTitle -md">
+                <h2 className="sectionTitle__title">深圳精選酒店</h2>
+                <p className=" sectionTitle__text mt-5 sm:mt-0">
+                  精選深圳南山區、福田區、羅湖區十大奢華親子打卡酒店推介
+                </p>
+              </div>
+            </div>
+          </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <div className="relative overflow-hidden pt-40 sm:pt-20">
+            <div className="row y-gap-30">
+              <HotelFilters limit={8} />
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+      <section className="layout-pt-lg layout-pb-lg bg-dark-3">
+        <div className="container">
+          <div className="row y-gap-60">
+            <div className="col-xl-5 col-lg-6">
+              <h2 className="text-30 text-white">
+                關於我們
+              </h2>
+              <p className="text-white mt-20 mb-10">
+                Trip Trip Go 專注為港人提供優質北上住宿資訊整合及推介，務求提高北上體驗質素嘅平台
+              </p>
+              <p className="text-white">
+                Trip - 美好的旅程
+              </p>
+              <p className="text-white">
+                Trip - 享受最相宜價格
+              </p>
+              <p className="text-white">
+                Go - 實踐美好生活
+              </p>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+              <div className="row y-gap-30 text-white pt-60 lg:pt-40">
+                <div className="col-sm-5 col-6">
+                  <div className="text-30 lh-15 fw-600">30,000+</div>
+                  <div className="lh-15">精選酒店</div>
+                </div>
+                {/* End .col */}
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+                <div className="col-sm-5 col-6">
+                  <div className="text-30 lh-15 fw-600">8.18</div>
+                  <div className="lh-15">平均酒店評分</div>
+                  <div className="d-flex x-gap-5 items-center pt-10">
+                    <div className="icon-star text-white text-10" />
+                    <div className="icon-star text-white text-10" />
+                    <div className="icon-star text-white text-10" />
+                    <div className="icon-star text-white text-10" />
+                    <div className="icon-star text-white text-10" />
+                  </div>
+                </div>
+                {/* End .col */}
+              </div>
+            </div>
+            {/* End .col */}
+
+            <div className="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 col-md-10">
+              <Testimonial />
+            </div>
+            {/* End .col */}
+          </div>
+          {/* End .row */}
+
+          <div className="row justify-center text-center pt-60">
+            <div className="col-auto">
+              <div className="text-15 lh-1 text-white">
+                合作夥伴
+              </div>
+            </div>
+          </div>
+          {/* End .row */}
+
+          <div className="px-40 md:px-0">
+            <div className="row y-gap-30 justify-between items-center pt-60 lg:pt-40">
+              {["1", "2", "3", "4", "5", "6"].map((item, i) => (
+                <div className="col-md-auto col-sm-6" key={i}>
+                  <div className="d-flex justify-center">
+                    <img src={`/img/clients/${item}.svg`} alt="image" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CallToActionsHome />
+    </>
   )
 }

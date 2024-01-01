@@ -35,8 +35,8 @@ const Header1 = () => {
             <div className="col-auto">
               <div className="d-flex items-center">
                 <Link href="/" className="header-logo mr-20">
-                  <img src="/img/general/logo-light.svg" alt="logo icon" />
-                  <img src="/img/general/logo-dark.svg" alt="logo icon" />
+                  <img src="/logo-white.svg" alt="TripTripGo Logo" />
+                  <img src="/logo.svg" alt="TripTripGo Logo" />
                 </Link>
                 {/* End logo */}
               </div>

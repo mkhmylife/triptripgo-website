@@ -7,13 +7,15 @@ export interface Hotel {
   city: string;
   country: string;
   area?: string;
+  description?: string;
   featuredImageUrl: string;
   starRating: number;
   ratingAverage: number;
   numberOfReviews: number;
   agodaUrl?: string;
   tripUrl?: string;
-  price: number;
+  priceAgoda?: number;
+  priceTrip?: number;
   tags: string[];
 }
 
@@ -40,4 +42,14 @@ export const getProviderName = (hotel: Hotel) => {
   if (hotel.tripUrl) {
     return 'Trip.com';
   }
+}
+
+export const getRatingText = (ratingAverage: number) => {
+  if (ratingAverage >= 9.5) {
+    return '唔使諗';
+  }
+  if (ratingAverage >= 9) {
+    return '必住';
+  }
+  return '推介';
 }

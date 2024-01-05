@@ -3,7 +3,6 @@
 import {useEffect, useMemo} from "react";
 import {useParams} from "next/navigation";
 import Image from "next/image";
-import BlockGuide from "@/components/BlockGuide/BlockGuide";
 
 const Redirect = () => {
 
@@ -38,30 +37,29 @@ const Redirect = () => {
   useEffect(() => {
     if (redirectUrl) {
       window.setTimeout(() => {
-        //window.location.href = redirectUrl;
+        window.location.href = redirectUrl;
       }, 2000);
       (async () => {
-        // await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/l`, {
-        //   method: 'POST',
-        //   body: JSON.stringify({
-        //     name: 'redirect',
-        //     prop: {
-        //       url: redirectUrl
-        //     }
-        //   }),
-        //   headers: {
-        //     'Accept': 'application/json',
-        //     'Content-Type': 'application/json',
-        //     userId: `website`
-        //   },
-        // });
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/hotel/l`, {
+          method: 'POST',
+          body: JSON.stringify({
+            name: 'redirect',
+            payload: {
+              url: redirectUrl
+            }
+          }),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        });
       })();
     }
   }, [redirectUrl]);
 
   return (
     <div className="bg-[#f7f7f7] min-h-full w-full md:absolute flex justify-center items-center">
-      <div className="md:max-w-[760px] bg-white md:rounded-md overflow-hidden w-full text-center">
+      <div className="md:max-w-[560px] bg-white md:rounded-md overflow-hidden w-full text-center">
         <header className="bg-primary text-center flex justify-center py-3">
           <Image
             className="h-8 w-auto"
@@ -112,7 +110,7 @@ const Redirect = () => {
           {/*  </section>*/}
           {/*</div>*/}
           {redirectUrl ? (
-            <p className="text-xs text-slate-500 mb-[20px]">如果您的瀏覽器未能於10秒內重新導向，請您點擊此<a href={redirectUrl}><u>連結</u></a></p>
+            <p className="text-xs text-gray-500 mb-[20px]">如瀏覽器未能重新導向，請點擊此<a href={redirectUrl}><u>連結</u></a></p>
           ) : null}
         </div>
       </div>

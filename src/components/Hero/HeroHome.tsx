@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function HeroHome() {
   return (
     <section className="masthead -type-2 z-2">
@@ -49,8 +51,10 @@ export default function HeroHome() {
             <div className="col-xl-6">
               <div className="masthead__images relative-1">
                 <div data-aos="fade" data-aos-delay="400">
-                  <img
-                    src="https://steemitimages.com/DQmbfeQDkW7i4JndLFgYwu6cBbg2mDvDRBqL4e58mxdvDFL/IMG_8674.JPG"
+                  <Image
+                    width={720}
+                    height={1080}
+                    src="/images/home1.jpeg"
                     alt="image"
                     className="js-mouse-move"
                   />
@@ -58,8 +62,10 @@ export default function HeroHome() {
                 {/* End left image */}
 
                 <div data-aos="fade" data-aos-delay="600">
-                  <img
-                    src="https://www.linkreitchina.com/_B/ShopCentrePhoto/cenwalk/link-reit-china-link-centralwalk-sightseeing-1.jpg"
+                  <Image
+                    width={1080}
+                    height={720}
+                    src="/images/home2.jpeg"
                     alt="image"
                     className="js-mouse-move"
                   />
@@ -67,8 +73,10 @@ export default function HeroHome() {
                 {/* End right top image */}
 
                 <div data-aos="fade" data-aos-delay="800">
-                  <img
-                    src="https://travel.ulifestyle.com.hk/cms/spots_photo/w600/20180831114708_1_7.jpg"
+                  <Image
+                    width={1080}
+                    height={720}
+                    src="/images/home3.jpeg"
                     alt="image"
                     className="js-mouse-move"
                   />

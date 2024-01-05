@@ -53,6 +53,10 @@ const Footer = () => {
                   </div>
                 </div>
                 {/* End .col */}
+
+                <div className="col-auto">
+                  <div>所有資訊僅供參考，TripTripGo 概不承擔任何法律義務或責任</div>
+                </div>
               </div>
               {/* End .row */}
             </div>

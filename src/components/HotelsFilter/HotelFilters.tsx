@@ -1,10 +1,11 @@
 'use client';
 
 import Link from "next/link";
-import {getChainColor, getRatingText, Hotel} from "@/types/Hotel";
+import {getChainColor, getNearestMetroStation, getRatingText, Hotel} from "@/types/Hotel";
 import Image from "next/image";
 import useSWR from "swr";
 import {fetcher} from "@/lib/fetcher";
+import {useCallback} from "react";
 
 interface IProps {
   limit?: number;
@@ -24,6 +25,14 @@ const HotelFilters = (props: IProps) => {
     params.append('chainName', props.chainName);
   }
   const { data: hotels } = useSWR<Hotel[]>(`${process.env.NEXT_PUBLIC_API_URL}/hotel?${params.toString()}`, fetcher);
+
+  const nearestMetroStation = useCallback((hotel: Hotel) => {
+    const station = getNearestMetroStation(hotel.latitude, hotel.longitude);
+    if (station.distance > 10) {
+      return null;
+    }
+    return station;
+  }, []);
 
   return (
     <>
@@ -79,6 +88,11 @@ const HotelFilters = (props: IProps) => {
                     {hotel.area}
                   </>
                 ) : null}
+                {nearestMetroStation(hotel) ? (
+                  <>
+                    ，{nearestMetroStation(hotel)!.name}站步行約{Math.round(nearestMetroStation(hotel)!.distance/5.1*60)}分鐘
+                  </>
+                ) : null}
               </p>
 
               <div className="d-flex items-center mt-[10px]">
@@ -93,11 +107,11 @@ const HotelFilters = (props: IProps) => {
                 </div>
               </div>
 
-              {hotel.description ? (
-                <div className="text-sm line-clamp-3 mt-[10px] mb-[20px] text-gray-600">
-                  {hotel.description}
-                </div>
-              ) : null}
+              {/*{hotel.description ? (*/}
+              {/*  <div className="text-sm line-clamp-3 mt-[10px] mb-[20px] text-gray-600">*/}
+              {/*    {hotel.description}*/}
+              {/*  </div>*/}
+              {/*) : null}*/}
 
               <div className={`mt-10 grid gap-2 ${hotel.agodaUrl && hotel.tripUrl ? 'grid-cols-2' : 'grid-cols-1'}`}>
                 {hotel.tripUrl ? (

@@ -4,6 +4,7 @@ import './globals.css';
 import './sass/main.scss';
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import Gtm from "@/components/Gtm";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="zh-HK">
     <meta name="agd-partner-manual-verification" />
     <body className={inter.className}>
+    <Gtm />
     <Header />
     {children}
     <Footer />

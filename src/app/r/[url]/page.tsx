@@ -3,6 +3,7 @@
 import {useEffect, useMemo} from "react";
 import {useParams} from "next/navigation";
 import Image from "next/image";
+import Gtm from "@/components/Gtm";
 
 const Redirect = () => {
 
@@ -37,7 +38,7 @@ const Redirect = () => {
   useEffect(() => {
     if (redirectUrl) {
       window.setTimeout(() => {
-        window.location.href = redirectUrl;
+        //window.location.href = redirectUrl;
       }, 2000);
       (async () => {
         await fetch(`${process.env.NEXT_PUBLIC_API_URL}/hotel/l`, {
@@ -95,7 +96,7 @@ const Redirect = () => {
             </div>
           ) : null}
 
-          <h1 className="font-medium text-2xl py-[40px]">傳送門正將你送到 {redirectProviderMeta.name}</h1>
+          <h1 className="font-medium text-2xl py-[40px]">正將你重新導向到 {redirectProviderMeta.name}</h1>
           <div className="w-[90%] mx-auto my-14" />
           {/*<div className="w-[90%] mx-auto my-14">*/}
           {/*  <hr />*/}

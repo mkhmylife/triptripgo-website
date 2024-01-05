@@ -26,9 +26,12 @@ const Header1 = () => {
     };
   }, []);
 
+  if (pathname.includes('/r/')) {
+    return null;
+  }
+
   return (
     <>
-      {" "}
       <header className={`header ${navbar ? "bg-dark-1 is-sticky" : ""}`}>
         <div className="header__container container">
           <div className="row justify-between items-center">

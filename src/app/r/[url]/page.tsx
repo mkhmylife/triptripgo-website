@@ -38,7 +38,7 @@ const Redirect = () => {
   useEffect(() => {
     if (redirectUrl) {
       window.setTimeout(() => {
-        //window.location.href = redirectUrl;
+        window.location.href = redirectUrl;
       }, 2000);
       (async () => {
         await fetch(`${process.env.NEXT_PUBLIC_API_URL}/hotel/l`, {

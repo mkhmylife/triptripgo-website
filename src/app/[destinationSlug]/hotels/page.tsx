@@ -99,16 +99,18 @@ export default function Hotels() {
             <div className="border-top-light mt-30 mb-30"></div>
             {/* End border-top */}
 
-            <div className="row y-gap-30">
-              <HotelFilters
-                chainName={activeChainName}
-                area={activeArea}
-              />
-            </div>
             {/* End .row */}
             {/*<Pagination />*/}
           </div>
           {/* End .row */}
+
+          <div className="row y-gap-30">
+            <HotelFilters
+              chainName={activeChainName}
+              area={activeArea}
+            />
+          </div>
+
         </div>
         {/* End .container */}
       </section>

@@ -46,46 +46,46 @@ const Footer = () => {
                 </div>
                 {/* End .col */}
 
-                <div className="col-auto">
-                  <div className="d-flex x-gap-15">
-                    <a href="#">私隱政策</a>
-                    <a href="#">使用條款</a>
-                  </div>
-                </div>
-                {/* End .col */}
+                {/*<div className="col-auto">*/}
+                {/*  <div className="d-flex x-gap-15">*/}
+                {/*    <a href="#">私隱政策</a>*/}
+                {/*    <a href="#">使用條款</a>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
+                {/*/!* End .col *!/*/}
 
-                <div className="col-auto">
-                  <div>所有資訊僅供參考，TripTripGo 概不承擔任何法律義務或責任</div>
-                </div>
+                {/*<div className="col-auto">*/}
+                {/*  <div className="text-[10px]">所有資訊僅供參考，TripTripGo 概不承擔任何法律義務或責任</div>*/}
+                {/*</div>*/}
               </div>
               {/* End .row */}
             </div>
             {/* End .col */}
 
-            <div className="col-auto">
-              <div className="row y-gap-10 items-center">
-                {/*<div className="col-auto">*/}
-                {/*  <div className="d-flex items-center">*/}
-                {/*    <button className="d-flex items-center text-14 fw-500 text-white mr-10">*/}
-                {/*      <i className="icon-globe text-16 mr-10" />*/}
-                {/*      <span className="underline">English (US)</span>*/}
-                {/*    </button>*/}
-                {/*    <button className="d-flex items-center text-14 fw-500 text-white">*/}
-                {/*      <i className="icon-usd text-16 mr-10" />*/}
-                {/*      <span className="underline">USD</span>*/}
-                {/*    </button>*/}
-                {/*  </div>*/}
-                {/*</div>*/}
-                {/* End .col */}
+            {/*<div className="col-auto">*/}
+            {/*  <div className="row y-gap-10 items-center">*/}
+            {/*    /!*<div className="col-auto">*!/*/}
+            {/*    /!*  <div className="d-flex items-center">*!/*/}
+            {/*    /!*    <button className="d-flex items-center text-14 fw-500 text-white mr-10">*!/*/}
+            {/*    /!*      <i className="icon-globe text-16 mr-10" />*!/*/}
+            {/*    /!*      <span className="underline">English (US)</span>*!/*/}
+            {/*    /!*    </button>*!/*/}
+            {/*    /!*    <button className="d-flex items-center text-14 fw-500 text-white">*!/*/}
+            {/*    /!*      <i className="icon-usd text-16 mr-10" />*!/*/}
+            {/*    /!*      <span className="underline">USD</span>*!/*/}
+            {/*    /!*    </button>*!/*/}
+            {/*    /!*  </div>*!/*/}
+            {/*    /!*</div>*!/*/}
+            {/*    /!* End .col *!/*/}
 
-                {/*<div className="col-auto">*/}
-                {/*  <div className="d-flex x-gap-20 items-center">*/}
-                {/*    <Social />*/}
-                {/*  </div>*/}
-                {/*</div>*/}
-                {/* End .col */}
-              </div>
-            </div>
+            {/*    /!*<div className="col-auto">*!/*/}
+            {/*    /!*  <div className="d-flex x-gap-20 items-center">*!/*/}
+            {/*    /!*    <Social />*!/*/}
+            {/*    /!*  </div>*!/*/}
+            {/*    /!*</div>*!/*/}
+            {/*    /!* End .col *!/*/}
+            {/*  </div>*/}
+            {/*</div>*/}
             {/* End .col */}
           </div>
         </div>

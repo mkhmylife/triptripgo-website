@@ -59,8 +59,11 @@ const HotelFilters = (props: IProps) => {
               </div>
             </div>
             <div className="hotelsCard__content p-[14px]">
-              <h4 className="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
+              <h4 className="hotelsCard__title text-dark-1 text-18 lh-16 fw-500 line-clamp-1">
                 <span>{hotel.name}</span>
+              </h4>
+              <h4 className="hotelsCard__title text-dark-1 text-14 lh-16 fw-500 line-clamp-1 mb-[5px]">
+                <span>{hotel.nameEn}</span>
               </h4>
               <div className="text-yellow-500 flex mb-[5px]">
                 {new Array(hotel.starRating).fill(0).map((_, index) => (
@@ -73,7 +76,7 @@ const HotelFilters = (props: IProps) => {
                 {hotel.city}
                 {hotel.area ? (
                   <>
-                    ，{hotel.area}
+                    {hotel.area}
                   </>
                 ) : null}
               </p>

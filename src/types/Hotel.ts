@@ -1,4 +1,6 @@
 import {SZ} from "@/lib/metroLocation";
+import {calcDistance} from "@/lib/calcDistance";
+import {CheckPoints} from "@/lib/checkPoints";
 
 export interface Hotel {
   id: number;
@@ -59,22 +61,15 @@ export const getRatingText = (ratingAverage: number) => {
 }
 
 export const getNearestMetroStation = (latitude: number, longitude: number) => {
-  const calcDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
-    const radlat1 = Math.PI * lat1 / 180;
-    const radlat2 = Math.PI * lat2 / 180;
-    const radlon1 = Math.PI * lon1 / 180;
-    const radlon2 = Math.PI * lon2 / 180;
-    const theta = lon1 - lon2;
-    const radtheta = Math.PI * theta / 180;
-    let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-    dist = Math.acos(dist)
-    dist = dist * 180/Math.PI
-    dist = dist * 60 * 1.1515
-    return dist * 1.609344;
-  }
-  const station = SZ.map((s) => {
+  return SZ.map((s) => {
     const distance = calcDistance(latitude, longitude, s.latitude, s.longitude);
     return {...s, ...{distance}}
   }).sort((a, b) => a.distance - b.distance)[0];
-  return station;
+}
+
+export const getNearestCheckPoint = (latitude: number, longitude: number) => {
+  return CheckPoints.map((s) => {
+    const distance = calcDistance(latitude, longitude, s.latitude, s.longitude);
+    return {...s, ...{distance}}
+  }).sort((a, b) => a.distance - b.distance)[0];
 }

@@ -2,6 +2,13 @@ import {SZ} from "@/lib/metroLocation";
 import {calcDistance} from "@/lib/calcDistance";
 import {CheckPoints} from "@/lib/checkPoints";
 
+export interface HotelPlaceDistance {
+  id: number;
+  name: string;
+  distance: number;
+  group: string;
+}
+
 export interface Hotel {
   id: number;
   slug: string;
@@ -13,6 +20,7 @@ export interface Hotel {
   area?: string;
   description?: string;
   featuredImageUrl: string;
+  imageUrls: string[];
   starRating: number;
   ratingAverage: number;
   numberOfReviews: number;
@@ -23,6 +31,9 @@ export interface Hotel {
   tags: string[];
   latitude: number;
   longitude: number;
+  nearestMetroStation: HotelPlaceDistance;
+  nearestCheckPoint: HotelPlaceDistance;
+  places: HotelPlaceDistance[];
 }
 
 export const getChainColor = (chainName: string) => {
@@ -55,21 +66,10 @@ export const getRatingText = (ratingAverage: number) => {
     return '唔使諗';
   }
   if (ratingAverage >= 9) {
+    return '冇得彈';
+  }
+  if (ratingAverage >= 8) {
     return '必住';
   }
   return '推介';
-}
-
-export const getNearestMetroStation = (latitude: number, longitude: number) => {
-  return SZ.map((s) => {
-    const distance = calcDistance(latitude, longitude, s.latitude, s.longitude);
-    return {...s, ...{distance}}
-  }).sort((a, b) => a.distance - b.distance)[0];
-}
-
-export const getNearestCheckPoint = (latitude: number, longitude: number) => {
-  return CheckPoints.map((s) => {
-    const distance = calcDistance(latitude, longitude, s.latitude, s.longitude);
-    return {...s, ...{distance}}
-  }).sort((a, b) => a.distance - b.distance)[0];
 }

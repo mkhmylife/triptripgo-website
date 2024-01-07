@@ -12,10 +12,11 @@ export default function Hotels() {
 
   const activeArea = query.get('area');
   const activeChainName = query.get('chainName');
+  const activeNearby = query.get('nearby');
 
   return (
     <>
-      <section className="section-bg py-[100px] relative z-5">
+      <section className="section-bg py-[60px] relative z-5">
         <div className="section-bg__item col-12">
           <Image
             width={1920}
@@ -32,10 +33,20 @@ export default function Hotels() {
           <div className="row">
             <div className="col-12">
               <div className="text-center">
-                <h1 className="text-[40px] fw-600 text-white mb-[10px]">
-                  深圳精選酒店
+                <h1 className="text-[30px] md:text-[40px] fw-600 text-white mt-[20px] mb-[10px]">
+                  深圳精選{activeNearby||activeArea||activeChainName}酒店
                 </h1>
-                <h2 className="text-[16px] text-white">深圳南山區、福田區、羅湖區百大奢華親子打卡酒店推介</h2>
+                <h2 className="text-[16px] text-[18px] text-white">
+                  {(activeNearby||activeArea||activeChainName) ? (
+                    <>
+                      想去深圳{activeNearby||activeArea||activeChainName}？<br />TripTripGo 精選{activeNearby||activeArea||activeChainName}酒店推介
+                    </>
+                  ) : (
+                    <>
+                      深圳南山區、福田區、羅湖區百大奢華親子打卡酒店推介
+                    </>
+                  )}
+                </h2>
               </div>
               {/* End text-center */}
               {/*<MainFilterSearchBox />*/}
@@ -46,7 +57,7 @@ export default function Hotels() {
       </section>
       {/* Top SearchBanner */}
 
-      <section className="layout-pt-md layout-pb-lg">
+      <section className="layout-pt-sm layout-pb-lg">
         <div className="container">
           <div className="row y-gap-20 justify-between items-center">
             <div className="col-auto">
@@ -59,11 +70,11 @@ export default function Hotels() {
                 <div className="flex flex-wrap gap-[10px]">
                   <Link
                     href={`/${param.destinationSlug}/hotels`}
-                    className={`d-flex items-center text-14 rounded-100 border-light px-15 h-34 hover:bg-blue-500 hover:text-white hover:bg-blue-500 hover:text-white ${!activeArea && !activeChainName ? 'bg-blue-500 text-white border-blue-500' : null}`}
+                    className={`d-flex items-center text-14 rounded-100 border-light px-15 h-34 hover:bg-blue-500 hover:text-white hover:bg-blue-500 hover:text-white ${!activeArea && !activeChainName && !activeNearby ? 'bg-blue-500 text-white border-blue-500' : null}`}
                   >
                     <span className="js-dropdown-title">所有</span>
                   </Link>
-                  {['南山區', '福田區'].map((area) => (
+                  {['南山區', '福田區', '羅湖區', '寶安區'].map((area) => (
                     <Link
                       href={`?area=${area}`}
                       key={`area-${area}`}
@@ -72,15 +83,24 @@ export default function Hotels() {
                       <span className="js-dropdown-title">{area}</span>
                     </Link>
                   ))}
-                  {['萬豪', '凱悅', '亞朵'].map((chainName) => (
+                  {['盒馬鮮生', '山姆'].map((item) => (
                     <Link
-                      href={`?chainName=${chainName}`}
-                      key={`chainName-${chainName}`}
-                      className={`d-flex items-center text-14 rounded-100 border-light px-15 h-34 hover:bg-blue-500 hover:text-white hover:bg-blue-500 hover:text-white ${activeChainName === chainName ? 'bg-blue-500 text-white border-blue-500' : null}`}
+                      href={`?nearby=${item}`}
+                      key={`nearby-${item}`}
+                      className={`d-flex items-center text-14 rounded-100 border-light px-15 h-34 hover:bg-blue-500 hover:text-white hover:bg-blue-500 hover:text-white ${activeNearby === item ? 'bg-blue-500 text-white border-blue-500' : null}`}
                     >
-                      <span className="js-dropdown-title">{chainName}</span>
+                      <span className="js-dropdown-title">{item}</span>
                     </Link>
                   ))}
+                  {/*{['萬豪', '凱悅', '亞朵'].map((chainName) => (*/}
+                  {/*  <Link*/}
+                  {/*    href={`?chainName=${chainName}`}*/}
+                  {/*    key={`chainName-${chainName}`}*/}
+                  {/*    className={`d-flex items-center text-14 rounded-100 border-light px-15 h-34 hover:bg-blue-500 hover:text-white hover:bg-blue-500 hover:text-white ${activeChainName === chainName ? 'bg-blue-500 text-white border-blue-500' : null}`}*/}
+                  {/*  >*/}
+                  {/*    <span className="js-dropdown-title">{chainName}</span>*/}
+                  {/*  </Link>*/}
+                  {/*))}*/}
                 </div>
                 {/* End .col-auto */}
               </div>
@@ -108,6 +128,7 @@ export default function Hotels() {
             <HotelFilters
               chainName={activeChainName}
               area={activeArea}
+              nearby={activeNearby}
             />
           </div>
 

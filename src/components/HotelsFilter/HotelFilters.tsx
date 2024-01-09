@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import {getChainColor, getRatingText, Hotel, HotelPlaceDistance} from "@/types/Hotel";
+import {getChainColor, getChainIcon, getMetroLineColor, getRatingText, Hotel, HotelPlaceDistance} from "@/types/Hotel";
 import Image from "next/image";
 import useSWR from "swr";
 import {fetcher} from "@/lib/fetcher";
@@ -122,22 +122,16 @@ const HotelFilters = (props: IProps) => {
                       />
                     ))}
                   </Slider>
-                  {/*{hotel.featuredImageUrl && hotel.featuredImageUrl !== '' && hotel.featuredImageUrl !== 'undefined' ? (*/}
-                  {/*  <Image*/}
-                  {/*    className="aspect-[14/10] object-cover"*/}
-                  {/*    src={hotel.featuredImageUrl}*/}
-                  {/*    alt={hotel.name}*/}
-                  {/*    width={600}*/}
-                  {/*    height={600*14/10}*/}
-                  {/*  />*/}
-                  {/*) : null}*/}
                 </div>
                 {hotel.chainName ? (
                   <div className="cardImage__leftBadge">
                     <div className="bg-yellow-600 bg-red-500 bg-blue-600"/>
                     <div
-                      className={`py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 text-bold text-white ${getChainColor(hotel.chainName)}`}
+                      className={`py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 text-bold text-white flex gap-2 ${getChainColor(hotel.chainName)}`}
                     >
+                      {getChainIcon(hotel.chainName) ? (
+                        <Image className="rounded-[10px] bg-white" src={getChainIcon(hotel.chainName)!} alt={hotel.chainName} width={20} height={20} />
+                      ) : null}
                       {hotel.chainName}
                     </div>
                   </div>
@@ -159,7 +153,18 @@ const HotelFilters = (props: IProps) => {
                     </svg>
                   ))}
                 </div>
-                <p className="text-slate-600 lh-14 text-14 mb-[10px]">
+                <div className="d-flex items-center mb-[8px]">
+                  <div className="flex-center bg-blue-1 rounded-4 size-30 text-14 fw-600 text-white">
+                    {hotel.ratingAverage?.toFixed(1)}
+                  </div>
+                  <div className="text-14 text-dark-1 fw-500 ml-10">
+                    {getRatingText(hotel.ratingAverage)}
+                  </div>
+                  <div className="text-xs text-light-1 ml-10">
+                    {hotel.numberOfReviews} 評價
+                  </div>
+                </div>
+                <p className="text-slate-600 lh-14 text-14 mb-[16px]">
                   {hotel.city}
                   {hotel.area ? (
                     <>
@@ -170,8 +175,8 @@ const HotelFilters = (props: IProps) => {
                   推薦使用{hotel.nearestCheckPoint.name}過境
                 </p>
 
+                <p className="font-bold text-brand lh-14 text-14 mb-[8px]">酒店附近景點</p>
                 <div className="bg-slate-100 p-[10px] mb-[20px] rounded-4">
-                  <p className="font-bold text-brand lh-14 text-14 mb-[8px]">酒店附近景點</p>
                   <ul className="list space-y-2.5">
                     {hotel.places.map(place => (
                       <li key={`nearby-places-${place.id}`} className="flex items-center gap-1.5">
@@ -181,19 +186,54 @@ const HotelFilters = (props: IProps) => {
                     ))}
                   </ul>
                 </div>
-
-                <div className="d-flex items-center mb-[16px]">
-                  <div className="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">
-                    {hotel.ratingAverage?.toFixed(1)}
-                  </div>
-                  <div className="text-14 text-dark-1 fw-500 ml-10">
-                    {getRatingText(hotel.ratingAverage)}
-                  </div>
-                  <div className="text-14 text-light-1 ml-10">
-                    {hotel.numberOfReviews} 評價
-                  </div>
-                </div>
               </Link>
+
+              {hotel.checkPointMetroGuide.length > 0 ? (
+                <div className="metro-guide">
+                  <p className="font-bold text-brand lh-14 text-14 mb-[8px]">地鐵指南</p>
+                  <div className="bg-[#2DB351] bg-[#C05700] bg-[#4EA6C2] bg-[#D22F10] bg-[#9B50A4] bg-[#40C5B8] bg-[#1634AF] bg-[#B85808] bg-[#896974] bg-[#896974] bg-[#701C3E] bg-[#A293AD] bg-[#CE820D] bg-[#E3CD70] bg-[#3817A7] bg-[#9CDCE1]" />
+                  <Slider
+                    speed={500}
+                    infinite={false}
+                    dots={true}
+                    arrows={false}
+                  >
+                    {hotel.checkPointMetroGuide.map(guide => (
+                      <div key={`checkpoint-metro-guide-${guide.id}`} className="bg-slate-100 p-[10px] mb-[40px] rounded-4 select-none">
+                        <p className="font-semibold text-slate-800 lh-14 text-14 mb-[6px]">{guide.checkPoint}出發</p>
+                        <div className="space-y-2.5">
+                          <div className="text-slate-700">
+                            <div className="flex gap-1 items-center mb-1">
+                              {/*<p className="text-slate-700 text-14 lh-12">*/}
+                              {/*  {guide.checkPoint}：*/}
+                              {/*</p>*/}
+                              <div className="flex items-center gap-1 mb-0">
+                                <span className="text-14">乘搭</span>
+                                {guide.routes.map((route, index) => (
+                                  <div key={`route-${guide.id}-${index}`} className="flex items-center">
+                                    <div className={`text-xs rounded flex text-white justify-center items-center font-bold w-[18px] h-[18px] ${getMetroLineColor(route.lineNumber)}`}>
+                                      {route.lineNumber}
+                                    </div>
+                                    <span className="text-14 ml-[4px]">號線</span>
+                                    {index < guide.routes.length - 1 ? (
+                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                                      </svg>
+                                    ) : null}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            <p className="text-slate-700 text-14 lh-12">
+                              共{guide.routes.reduce((acc, route) => (acc + route.numberOfStops), 0)}個站，需時約{Math.round(guide.routes.reduce((acc, route) => (acc + route.duration), 0)/60)+5}分鐘
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
+              ) : null}
 
               {/*{hotel.description ? (*/}
               {/*  <div className="text-sm line-clamp-3 mt-[10px] mb-[20px] text-gray-600">*/}
@@ -208,7 +248,7 @@ const HotelFilters = (props: IProps) => {
                       <div className="font-semibold text-xs mb-[1px]">Trip.com</div>
                       <div className="text-blue-1 text-sm">
                         {hotel.priceTrip ? (
-                          <span className="font-bold">HK${Math.round(hotel.priceTrip).toLocaleString()}</span>
+                          <span className="font-bold">HK${Math.round(hotel.priceTrip).toLocaleString()}起</span>
                         ) : (
                           <span className="font-bold text-[12px]">查看至抵價格</span>
                         )}

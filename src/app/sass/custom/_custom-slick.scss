@@ -186,3 +186,19 @@
         right: 35px;
     }
 }
+
+.metro-guide {
+    .slick-dots {
+        position: relative;
+        top: -5px;
+
+        li {
+            background: rgba(171, 171, 171, 0.66);
+        }
+
+        .slick-active {
+            width: 8px;
+            background: #23323b;
+        }
+    }
+}

@@ -31,14 +31,6 @@ import Link from "next/link";
 //   }
 // };
 
-export const homeItems = [
-  {
-    name: "Home 01",
-    routePath: "/",
-  },
-]
-
-
 const MainMenu = ({ style = "" }) => {
   const pathname = usePathname();
   const [isActiveParent, setIsActiveParent] = useState(false);
@@ -73,6 +65,9 @@ const MainMenu = ({ style = "" }) => {
 
         <li className={pathname === "/contact" ? "current" : ""}>
           <Link href="/shenzhen/hotels">深圳酒店</Link>
+        </li>
+        <li className={pathname === "/contact" ? "current" : ""}>
+          <Link href="/news/7-%e3%80%90%e6%b7%b1%e5%9c%b3%e5%a5%bd%e5%8e%bb%e8%99%952024%e3%80%91%e6%b7%b1%e5%9c%b3%e4%b8%80%e6%97%a5%e9%81%8a5%e5%a4%a7%e6%99%af%e9%bb%9e%e6%8e%a8%e4%bb%8b">深圳好去處 2024</Link>
         </li>
       </ul>
     </nav>

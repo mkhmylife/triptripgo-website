@@ -250,7 +250,13 @@ const HotelFilters = (props: IProps) => {
                         {hotel.priceTrip ? (
                           <span className="font-bold">HK${Math.round(hotel.priceTrip).toLocaleString()}起</span>
                         ) : (
-                          <span className="font-bold text-[12px]">查看至抵價格</span>
+                          <>
+                            {hotel.priceAgoda ? (
+                              <span className="font-bold">HK${Math.round(hotel.priceAgoda / 1.005).toLocaleString()}起</span>
+                            ) : (
+                              <span className="font-bold text-[12px]">查看至抵價格</span>
+                            )}
+                          </>
                         )}
                       </div>
                     </div>
@@ -267,7 +273,13 @@ const HotelFilters = (props: IProps) => {
                         {hotel.priceAgoda ? (
                           <span className="font-bold">HK${Math.round(hotel.priceAgoda).toLocaleString()}起</span>
                         ) : (
-                          <span className="font-bold text-[12px]">查看至抵價格</span>
+                          <>
+                            {hotel.priceTrip ? (
+                              <span className="font-bold">HK${Math.round(hotel.priceTrip * 1.005).toLocaleString()}起</span>
+                            ) : (
+                              <span className="font-bold text-[12px]">查看至抵價格</span>
+                            )}
+                          </>
                         )}
                       </div>
                     </div>

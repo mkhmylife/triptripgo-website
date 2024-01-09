@@ -124,13 +124,11 @@ export default function Hotels() {
           </div>
           {/* End .row */}
 
-          <div className="row y-gap-30">
-            <HotelFilters
-              chainName={activeChainName}
-              area={activeArea}
-              nearby={activeNearby}
-            />
-          </div>
+          <HotelFilters
+            chainName={activeChainName}
+            area={activeArea}
+            nearby={activeNearby}
+          />
 
         </div>
         {/* End .container */}

@@ -1,9 +1,5 @@
 import Image from "next/image";
-
-export async function getArticle(id: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/${id}`);
-  return await res.json();
-}
+import {getArticle} from "@/lib/article";
 
 export default async function Page({
                                      params: { slug },

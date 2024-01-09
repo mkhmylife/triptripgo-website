@@ -1,4 +1,4 @@
-import {getArticle} from "@/app/news/[slug]/page";
+import {getArticle} from "@/lib/article";
 
 export async function generateMetadata({
                                          params: { slug },

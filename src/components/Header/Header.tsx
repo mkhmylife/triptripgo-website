@@ -9,22 +9,22 @@ const Header1 = () => {
 
   const pathname = usePathname();
 
-  const [navbar, setNavbar] = useState(false);
+  // const [navbar, setNavbar] = useState(false);
 
-  const changeBackground = () => {
-    if (window.scrollY >= 10) {
-      setNavbar(true);
-    } else {
-      setNavbar(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", changeBackground);
-    return () => {
-      window.removeEventListener("scroll", changeBackground);
-    };
-  }, []);
+  // const changeBackground = () => {
+  //   if (window.scrollY >= 10) {
+  //     setNavbar(true);
+  //   } else {
+  //     setNavbar(false);
+  //   }
+  // };
+  //
+  // useEffect(() => {
+  //   window.addEventListener("scroll", changeBackground);
+  //   return () => {
+  //     window.removeEventListener("scroll", changeBackground);
+  //   };
+  // }, []);
 
   if (pathname.includes('/r/')) {
     return null;
@@ -32,7 +32,7 @@ const Header1 = () => {
 
   return (
     <>
-      <header className={`header ${navbar ? "bg-dark-1 is-sticky" : ""}`}>
+      <header className={`header bg-dark-1`}>
         <div className="header__container container">
           <div className="row justify-between items-center">
             <div className="col-auto">
